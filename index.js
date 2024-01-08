@@ -5,8 +5,12 @@ const cors = require('cors');
 const crypto = require('crypto');
 require('dotenv').config();
 const app = express();
-
-app.use(cors());
+const corsOptions ={
+    origin:'http://localhost:3000', 
+    credentials:true,           
+    optionSuccessStatus:200
+}
+app.use(cors(corseOptions));
 app.use(express.json());
 const db = mysql.createPool({
     host: process.env.host,
